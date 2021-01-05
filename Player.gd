@@ -64,6 +64,13 @@ func _item_area_entered(object):
 #		get_tree().paused = true
 		set_physics_process(false)
 	elif (object.is_in_group("interation_point")):
+		
+		if object.energy > 0 and current_energy < 0:
+			current_energy = 0
+		
+		if object.energy < 0 and current_energy > 0:
+			current_energy = 0
+		
 		current_energy += object.energy
 		
 		$EnergyTimer.start()
