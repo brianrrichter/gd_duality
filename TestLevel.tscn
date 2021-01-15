@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TestLevel.gd" type="Script" id=3]
 [ext_resource path="res://RoundHarm.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FreeCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 145.214, 10 )
@@ -11,16 +13,8 @@ extents = Vector2( 145.214, 10 )
 [node name="TestLevel" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2( 167.197, 267.372 )
-collision_layer = 2
-collision_mask = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-shape = SubResource( 1 )
+[node name="Platform" parent="." instance=ExtResource( 6 )]
+position = Vector2( 155.556, 267.311 )
 
 [node name="Platform2" type="StaticBody2D" parent="."]
 position = Vector2( 516.923, 267.372 )
@@ -90,3 +84,6 @@ position = Vector2( 21.1588, 234.693 )
 
 [node name="Goal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1341.99, 234.285 )
+
+[node name="FreeCamera" parent="." instance=ExtResource( 5 )]
+current = false

@@ -1,11 +1,55 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_5.png" type="Texture" id=2]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_4.png" type="Texture" id=3]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_3.png" type="Texture" id=4]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_1.png" type="Texture" id=5]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_3.png" type="Texture" id=6]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_5.png" type="Texture" id=7]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_4.png" type="Texture" id=8]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_2.png" type="Texture" id=9]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_2.png" type="Texture" id=10]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_4.png" type="Texture" id=11]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_3.png" type="Texture" id=12]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_7.png" type="Texture" id=13]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_6.png" type="Texture" id=14]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_6.png" type="Texture" id=15]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_5.png" type="Texture" id=16]
+[ext_resource path="res://images/Character/Personagem_neutro_/Personagem_neutro_6.png" type="Texture" id=17]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_7.png" type="Texture" id=18]
+[ext_resource path="res://images/Character/Personagem_feliz_/Personagem_feliz_2.png" type="Texture" id=19]
+[ext_resource path="res://images/Character/Personagem_triste_/Personagem_triste_7.png" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 30.4617
+height = 123.695
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 20.0933 )
+extents = Vector2( 31.0563, 90.5255 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "neutral_walking",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "iddle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "sad_walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "happy_walking",
+"speed": 5.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
@@ -31,8 +75,10 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="EnergyTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 260, -100 )
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
@@ -40,8 +86,12 @@ current = true
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
 margin_right = 74.0
 margin_bottom = 31.0
-text = "ESC - QUIT
-R - RESTART"
+text = "R - RESTART"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -18 )
+frames = SubResource( 3 )
+animation = "happy_walking"

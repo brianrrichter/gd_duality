@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://FallingObject.gd" type="Script" id=1]
+[ext_resource path="res://FallingObjectArea2D.gd" type="Script" id=2]
+[ext_resource path="res://images/as_small/mob_spider_/mob_spider_3.png" type="Texture" id=3]
+[ext_resource path="res://images/as_small/mob_spider_/mob_spider_2.png" type="Texture" id=4]
+[ext_resource path="res://images/as_small/mob_spider_/mob_spider_1.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 44.8608
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="FallingObject" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="FallingObjectArea2D" type="Area2D" parent="." groups=[
+"interation_point",
+]]
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjectArea2D"]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="FallingObjectArea2D"]
+frames = SubResource( 2 )
+playing = true
+
+[node name="Label" type="Label" parent="FallingObjectArea2D"]
+margin_left = -134.134
+margin_top = -6.73478
+margin_right = -44.1342
+margin_bottom = 7.26522
+text = "click (or don't)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="SideTween" type="Tween" parent="."]

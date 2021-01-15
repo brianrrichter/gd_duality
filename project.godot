@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Duality"
-run/main_scene="res://TestLevel.tscn"
+run/main_scene="res://TestLevel2.tscn"
 config/icon="res://icon.png"
 
 [layer_names]
@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 2d_physics/layer_1="player"
 2d_physics/layer_2="ground"
 2d_physics/layer_3="objects"
+2d_physics/layer_10="activator"
 
 [rendering]
 
